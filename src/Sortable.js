@@ -1304,7 +1304,11 @@ Sortable.prototype = /** @lends Sortable.prototype */ {
 					if (after && !nextSibling) {
 						el.appendChild(dragEl);
 					} else {
-						target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
+						if (nextCommentSibling.nodeType === Node.COMMENT_NODE) {
+                                                    target.appendChild(dragEl);
+                                                } else {
+                                                    target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
+                                                }
 					}
 
 					// Undo chrome's scroll adjustment (has no effect on other browsers)
