@@ -1304,8 +1304,8 @@ Sortable.prototype = /** @lends Sortable.prototype */ {
 					if (after && !nextSibling) {
 						el.appendChild(dragEl);
 					} else {
-						if (nextCommentSibling.nodeType === Node.COMMENT_NODE) {
-                                                    target.appendChild(dragEl);
+						if (target.nextSibling.nodeType === Node.COMMENT_NODE) {
+                                                    target.after(dragEl);
                                                 } else {
                                                     target.parentNode.insertBefore(dragEl, after ? nextSibling : target);
                                                 }
